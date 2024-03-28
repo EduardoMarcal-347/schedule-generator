@@ -9,6 +9,14 @@ public class SessionSchedule {
         this.sessions = sessions;
     }
 
+    public Session[] getSessions() {
+        return sessions;
+    }
+
+    public void setSessions(Session[] sessions) {
+        this.sessions = sessions;
+    }
+
     public void printSchedule() {
         for(Session session : sessions) {
             System.out.println("Semester: " + session.getSemester() + " | Subject: " + session.getSubject() + " | Day" +

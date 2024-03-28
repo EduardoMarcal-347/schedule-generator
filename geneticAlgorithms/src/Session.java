@@ -13,6 +13,17 @@ public class Session {
         this.dayOfWeek = dayOfWeek;
     }
 
+    public Session(Session entity) {
+        this.professor = entity.professor;
+        this.semester = entity.semester;
+        this.subject = entity.subject;
+        this.sessionPeriod = entity.sessionPeriod;
+        this.dayOfWeek = entity.dayOfWeek;
+    }
+
+    public Session() {
+    }
+
     public String getProfessor() {
         return professor;
     }
