@@ -8,7 +8,6 @@ import utils.GlobalEnv;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
 public class Populate {
 
     private ArrayList<Teacher> teachers;
