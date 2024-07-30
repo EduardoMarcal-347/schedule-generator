@@ -1,4 +1,5 @@
 import model.CourseSchedule;
+import processor.CrossBreed;
 import processor.Ordenate;
 import processor.Populate;
 import processor.Selection;
@@ -22,6 +23,12 @@ public class Main {
         for ( Map.Entry<CourseSchedule, CourseSchedule> parent : parents ) {
             System.out.println( "Pai: " + parent.getKey().getGeneticAvaliation() + ", Mãe: " + parent.getValue().getGeneticAvaliation());
         }
+
+        CourseSchedule[] mixedSchedules = CrossBreed.crossSchedulesGenetics( parents );
+        for ( CourseSchedule mixedSchedule : mixedSchedules ) {
+            System.out.println("Avaliation of individual genetics 2º generation: " + mixedSchedule.getGeneticAvaliation() );
+        }
+
     }
 
 }

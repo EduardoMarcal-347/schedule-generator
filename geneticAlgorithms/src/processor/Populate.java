@@ -15,12 +15,12 @@ public class Populate {
     public CourseSchedule[] generateInitialPopulation() {
         CourseSchedule[] initialPopulation = new CourseSchedule[100];
         for (int i = 0; i < initialPopulation.length; i++) {
-            initialPopulation[i] = generateRandomPopulation();
+            initialPopulation[i] = generateRandomIndividual();
         }
         return initialPopulation;
     }
 
-    public CourseSchedule generateRandomPopulation() {
+    public CourseSchedule generateRandomIndividual() {
         initializeTeachers();
         CourseSchedule population = new CourseSchedule();
         for (int i = 0; i < GlobalEnv.TOTAL_TERMS; i++ ) {

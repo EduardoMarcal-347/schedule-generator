@@ -1,7 +1,5 @@
 package model;
 
-import utils.GlobalEnv;
-
 public class LessonSession {
 
     private int semester;

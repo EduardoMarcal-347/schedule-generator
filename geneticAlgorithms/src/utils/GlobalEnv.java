@@ -1,8 +1,5 @@
 package utils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class GlobalEnv {
 
     public static final int POPULATION_SIZE = 100;
