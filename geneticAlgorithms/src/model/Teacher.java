@@ -35,7 +35,7 @@ public class Teacher {
     public String getSubject() {
         String subject = ministradedSubject.getFirst();
         int timesUsed = timesSubjectUsed.get( subject );
-        if ( timesSubjectUsed.get( subject ) == 2 ) return ministradedSubject.removeFirst();
+        if ( timesSubjectUsed.get( subject ) == 1 ) return ministradedSubject.removeFirst();
         timesSubjectUsed.put( subject, ++timesUsed );
         return subject;
     }

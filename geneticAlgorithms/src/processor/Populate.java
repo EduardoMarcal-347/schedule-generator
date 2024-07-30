@@ -13,7 +13,15 @@ public class Populate {
 
     private ArrayList<Teacher> teachers;
 
-    public CourseSchedule generateInitialPopulation() {
+    public CourseSchedule[] generateInitialPopulation() {
+        CourseSchedule[] initialPopulation = new CourseSchedule[100];
+        for (int i = 0; i < initialPopulation.length; i++) {
+            initialPopulation[i] = generateRandomPopulation();
+        }
+        return initialPopulation;
+    }
+
+    public CourseSchedule generateRandomPopulation() {
         initializeTeachers();
         CourseSchedule population = new CourseSchedule();
         for (int i = 0; i < GlobalEnv.TOTAL_TERMS; i++ ) {
@@ -24,7 +32,8 @@ public class Populate {
                 }
             }
         }
-        return population;
+
+        return Avaliate.avaliateGenetics( population );
     }
 
     public void initializeTeachers() {
@@ -48,7 +57,6 @@ public class Populate {
 
     public LessonSession getRandomLessonSession(int semester, String dayOfWeek, int[] lessonPeriods) {
         LessonSession lesson = new LessonSession(  );
-        System.out.println(( int ) (Math.random() * teachers.size() ));
         Teacher teacher = teachers.get( ( int ) (Math.random() * teachers.size()) );
         lesson.setSemester( semester );
         lesson.setDayOfWeek( dayOfWeek );

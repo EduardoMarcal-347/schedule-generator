@@ -1,17 +1,30 @@
 package model;
 
+import utils.GlobalEnv;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class CourseSchedule {
 
     private ArrayList<LessonSession> sessions = new ArrayList<>(  );
+    private double geneticAvaliation;
 
     public CourseSchedule() {
+        this.geneticAvaliation = GlobalEnv.MAXIMUM_AVALIATION_VALUE;
     }
 
     public CourseSchedule( ArrayList<LessonSession> sessions ) {
         this.sessions = sessions;
+        this.geneticAvaliation = GlobalEnv.MAXIMUM_AVALIATION_VALUE;
+    }
+
+    public void decreaseAvaliation() {
+        this.geneticAvaliation -= 0.25;
+    }
+
+    public void addSession( LessonSession session ) {
+        sessions.add( session );
     }
 
     public ArrayList<LessonSession> getSessions( ) {
@@ -22,8 +35,12 @@ public class CourseSchedule {
         this.sessions = sessions;
     }
 
-    public void addSession( LessonSession session ) {
-        sessions.add( session );
+    public double getGeneticAvaliation( ) {
+        return geneticAvaliation;
+    }
+
+    public void setGeneticAvaliation( double geneticAvaliation ) {
+        this.geneticAvaliation = geneticAvaliation;
     }
 
     public void printSchedule() {

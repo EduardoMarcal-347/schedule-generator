@@ -1,5 +1,7 @@
 package model;
 
+import utils.GlobalEnv;
+
 public class LessonSession {
 
     private int semester;
@@ -7,6 +9,7 @@ public class LessonSession {
     private String teacher;
     private String subject;
     private int[] lessonPeriods = new int[2];
+
 
     public LessonSession( String teacher, int semester, String subject, int[] sessionPeriod, String dayOfWeek) {
         this.teacher = teacher;
