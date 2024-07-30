@@ -27,6 +27,10 @@ public class CourseSchedule {
         sessions.add( session );
     }
 
+    public void substituteSession( LessonSession session, LessonSession substitute ) {
+        sessions.set( sessions.indexOf( session ), substitute );
+    }
+
     public ArrayList<LessonSession> getSessions( ) {
         return sessions;
     }
