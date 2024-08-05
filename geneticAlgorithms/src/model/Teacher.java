@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class Teacher {
 
@@ -33,6 +34,10 @@ public class Teacher {
     }
 
     public String getSubject() {
+        return ministradedSubject.getFirst();
+    }
+
+    public String getSubjectAndAvaliate() {
         String subject = ministradedSubject.getFirst();
         int timesUsed = timesSubjectUsed.get( subject );
         if ( timesSubjectUsed.get( subject ) == 1 ) return ministradedSubject.removeFirst();
@@ -42,5 +47,26 @@ public class Teacher {
 
     public void setMinistradedSubject( ArrayList<String> ministradedSubject ) {
         this.ministradedSubject = ministradedSubject;
+    }
+
+    public HashMap<String, Integer> getTimesSubjectUsed( ) {
+        return timesSubjectUsed;
+    }
+
+    public void setTimesSubjectUsed( HashMap<String, Integer> timesSubjectUsed ) {
+        this.timesSubjectUsed = timesSubjectUsed;
+    }
+
+    @Override
+    public boolean equals( Object o ) {
+        if ( this == o ) return true;
+        if ( o == null || getClass( ) != o.getClass( ) ) return false;
+        Teacher teacher = ( Teacher ) o;
+        return Objects.equals( name, teacher.name );
+    }
+
+    @Override
+    public int hashCode( ) {
+        return Objects.hashCode( name );
     }
 }

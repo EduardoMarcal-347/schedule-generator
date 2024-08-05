@@ -16,20 +16,35 @@ public class Mutate {
         CourseSchedule[] mutatedPopulation = new CourseSchedule[population.length];
         for ( CourseSchedule individual : population ) {
             initializeTeachers();
+            int k = 0;
             for ( LessonSession gene : individual.getSessions( ) ) {
-                if ( Math.random() < mutationRate ) individual.substituteSession( gene, mutateGene(gene) );
+                if ( Math.random() < mutationRate && gene.getAvaliation()==0 ) individual.substituteSession( gene , mutateGene( k, individual ) );
+                k++;
             }
             mutatedPopulation[counter] = Avaliate.avaliateGenetics( individual );
             counter++;
+
         }
         return mutatedPopulation;
     }
 
-    public LessonSession mutateGene(LessonSession gene) {
-        Teacher randomTeacher = teachers.get((int) (Math.random() * teachers.size()));
-        gene.setTeacher( randomTeacher.getName() );
-//        gene.setSubject( randomTeacher.getSubject() );
-        return gene;
+    public LessonSession mutateGene(int geneIndex, CourseSchedule individual ) {
+        LessonSession geneAnalising = individual.getSessions().get( geneIndex );
+        for (int i = geneIndex; i< 50; i++) {
+            LessonSession currentGene = individual.getSessions( ).get( i );
+            if (currentGene.getAvaliation() == 0 && !currentGene.getTeacher().equals( geneAnalising.getTeacher() )) {
+                LessonSession result = new LessonSession();
+                result.setTeacher( currentGene.getTeacher() );
+                result.setSubject( currentGene.getSubject() );
+                result.setSemester( geneAnalising.getSemester() );
+                result.setDayOfWeek( geneAnalising.getDayOfWeek( ) );
+
+                currentGene.setSubject( geneAnalising.getSubject() );
+                currentGene.setTeacher( geneAnalising.getTeacher() );
+                return result;
+            }
+        }
+        return geneAnalising;
     }
 
     public void initializeTeachers() {

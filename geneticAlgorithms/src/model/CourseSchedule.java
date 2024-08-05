@@ -19,8 +19,8 @@ public class CourseSchedule {
         this.geneticAvaliation = GlobalEnv.MAXIMUM_AVALIATION_VALUE;
     }
 
-    public void decreaseAvaliation() {
-        this.geneticAvaliation -= 0.25;
+    public void decreaseAvaliation(double value) {
+        this.geneticAvaliation -= value;
     }
 
     public void addSession( LessonSession session ) {

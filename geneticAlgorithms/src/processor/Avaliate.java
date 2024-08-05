@@ -16,8 +16,14 @@ public class Avaliate {
         for ( LessonSession session : courseSchedule.getSessions( ) ) {
             teacherPeriodsStr = new StringBuilder( session.getDayOfWeek( ) ).append( Arrays.toString( session.getLessonPeriods( ) ) ).append( session.getTeacher( ) );
 
-            if ( teacherPeriods.containsKey( teacherPeriodsStr.toString( ) ) ) courseSchedule.decreaseAvaliation( );
-            if ( subjectPeriods.containsKey( session.getSubject() ) && subjectPeriods.get( session.getSubject() ) != session.getSemester( ) ) courseSchedule.decreaseAvaliation( );
+            if ( teacherPeriods.containsKey( teacherPeriodsStr.toString( ) ) ) {
+                courseSchedule.decreaseAvaliation( 0.50 );
+                session.setAvaliation( 0 );
+            }
+            if ( subjectPeriods.containsKey( session.getSubject() ) && subjectPeriods.get( session.getSubject() ) != session.getSemester( ) ) {
+                courseSchedule.decreaseAvaliation(0.25);
+                session.setAvaliation( 0 );
+            }
             teacherPeriods.put( String.valueOf( teacherPeriodsStr ), session.getTeacher( ) );
             subjectPeriods.put( session.getSubject( ), session.getSemester() );
         }

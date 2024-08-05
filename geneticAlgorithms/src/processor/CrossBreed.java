@@ -11,7 +11,7 @@ public class CrossBreed {
         CourseSchedule[] crossBreededSchedules = new CourseSchedule[parents.size()];
         int counter = 0;
         for ( Map.Entry<CourseSchedule, CourseSchedule> parent : parents ) {
-            crossBreededSchedules[counter] = mixSchedules( parent.getKey(), parent.getValue(), 4 );
+            crossBreededSchedules[counter] = mixSchedules( parent.getKey(), parent.getValue(), 12 );
             crossBreededSchedules[counter] = Avaliate.avaliateGenetics( crossBreededSchedules[counter] );
             counter++;
         }

@@ -7,6 +7,7 @@ public class LessonSession {
     private String teacher;
     private String subject;
     private int[] lessonPeriods = new int[2];
+    private int avaliation;
 
 
     public LessonSession( String teacher, int semester, String subject, int[] sessionPeriod, String dayOfWeek) {
@@ -15,6 +16,7 @@ public class LessonSession {
         this.subject = subject;
         this.lessonPeriods = sessionPeriod;
         this.dayOfWeek = dayOfWeek;
+        this.avaliation = 1;
     }
 
     public LessonSession( LessonSession entity) {
@@ -23,9 +25,19 @@ public class LessonSession {
         this.subject = entity.subject;
         this.lessonPeriods = entity.lessonPeriods;
         this.dayOfWeek = entity.dayOfWeek;
+        this.avaliation = entity.avaliation;
     }
 
     public LessonSession() {
+        this.avaliation = 1;
+    }
+
+    public int getAvaliation( ) {
+        return avaliation;
+    }
+
+    public void setAvaliation( int avaliation ) {
+        this.avaliation = avaliation;
     }
 
     public String getTeacher() {
